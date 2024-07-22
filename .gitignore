@@ -6,3 +6,7 @@ SwinTransformerV2/SwinTransformerV2_100M_8GPUS.json
 SwinTransformerV2/SwinTransformerV2_200M_8GPUS.json
 SwinTransformerV2/SwinTransformerV2_600M_8GPUS.json
 SwinTransformerV2/SwinTransformerV2_1B_8GPUS.json
+
+*.pdf
+*.png
+*.jpg

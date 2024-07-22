@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 
-MODEL = "MaskedAutoencoder" #"SwinTransformerV2"
+MODEL = "MaskedAutoencoder" #"SwinTransformerV2" #
 GPUS = 128
 
 dir_path = f"{MODEL}/"
@@ -49,15 +49,19 @@ file4 = dir_path + f"{MODEL}_100M_{GPUS}GPUS.json"
 data4 = json.load(open(file4))
 df4 = get_metric(data4, METRIC)
 
-plt.figure(figsize=(10, 6))
+sns.set(style="whitegrid")
+sns.set_context("paper")
+sns.set(font_scale=2.0)
+plt.figure(figsize=(12, 8))
 sns.lineplot(x=range(len(df1)), y="value", data=df1, label="1B")
 sns.lineplot(x=range(len(df2)), y="value", data=df2, label="600M")
 sns.lineplot(x=range(len(df3)), y="value", data=df3, label="200M")
 sns.lineplot(x=range(len(df4)), y="value", data=df4, label="100M")
-plt.xlabel("Execution Steps")
+plt.xlabel("Training Steps")
 plt.ylabel("GPU Power Usage (W)")
-plt.title(f"{MODEL} {GPUS} GPUs")
+plt.title(f"{MODEL} 128 GPUs")
+plt.ylim(100, 280)
 plt.legend()
-# plt.savefig("power_usage.pdf")
+plt.tight_layout()
+plt.savefig(f"{MODEL}_gpu_power_linechart.pdf")
 plt.show()
-#######################

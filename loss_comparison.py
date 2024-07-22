@@ -49,13 +49,14 @@ data2 = data2[data2["epoch"] < 12]
 data1 = data1.groupby("epoch").mean().reset_index()
 data2 = data2.groupby("epoch").mean().reset_index()
 sns.set(style="whitegrid")
+sns.set(font_scale=2.0)
 plt.figure(figsize=(10, 6))
 plt.plot(data1["epoch"], data1["value"], label="Train Loss")
 plt.plot(data2["epoch"], data2["value"], label="Validation Loss")
 plt.xlabel("Epoch")
 plt.ylabel("Loss")
 plt.legend()
-# plt.savefig("loss_comparison_epoch.pdf")
+plt.savefig("loss_comparison_epoch.pdf")
 plt.show()
 #############################################
 
